@@ -197,6 +197,7 @@ type DashboardsConfig struct {
 	// Secret that contains fields username and password for dashboards to use to login to opensearch, must only be supplied if a custom securityconfig is provided
 	OpensearchCredentialsSecret corev1.LocalObjectReference `json:"opensearchCredentialsSecret,omitempty"`
 	Env                         []corev1.EnvVar             `json:"env,omitempty"`
+	Keystore                    []KeystoreValue             `json:"keystore,omitempty"`
 	AdditionalVolumes           []AdditionalVolume          `json:"additionalVolumes,omitempty"`
 	Tolerations                 []corev1.Toleration         `json:"tolerations,omitempty"`
 	NodeSelector                map[string]string           `json:"nodeSelector,omitempty"`
