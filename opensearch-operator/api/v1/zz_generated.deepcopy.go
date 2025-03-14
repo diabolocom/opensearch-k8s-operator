@@ -534,6 +534,13 @@ func (in *DashboardsConfig) DeepCopyInto(out *DashboardsConfig) {
 			(*in)[i].DeepCopyInto(&(*out)[i])
 		}
 	}
+	if in.Keystore != nil {
+		in, out := &in.Keystore, &out.Keystore
+		*out = make([]KeystoreValue, len(*in))
+		for i := range *in {
+			(*in)[i].DeepCopyInto(&(*out)[i])
+		}
+	}
 	if in.AdditionalVolumes != nil {
 		in, out := &in.AdditionalVolumes, &out.AdditionalVolumes
 		*out = make([]AdditionalVolume, len(*in))

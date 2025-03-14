@@ -119,6 +119,14 @@ func NewDashboardsDeploymentForCR(cr *opsterv1.OpenSearchCluster, volumes []core
 			},
 		},
 	}
+	var initContainers []corev1.Container
+
+	// If Keystore Values are set in OpenSearchCluster manifest
+	if len(cr.Spec.Dashboards.Keystore) > 0 {
+		var keystoreInitContainer corev1.Container
+		volumeMounts, volumes, keystoreInitContainer = newKeystoreInitContainer(cr.Spec.Bootstrap.Keystore, resources, image, volumes, volumeMounts, securityContext)
+		initContainers = append(initContainers, keystoreInitContainer)
+	}
 
 	mainCommand := helpers.BuildMainCommandOSD("./bin/opensearch-dashboards-plugin", cr.Spec.Dashboards.PluginsList, "./opensearch-dashboards-docker-entrypoint.sh")
 
@@ -163,6 +171,7 @@ func NewDashboardsDeploymentForCR(cr *opsterv1.OpenSearchCluster, volumes []core
 							SecurityContext: securityContext,
 						},
 					},
+					InitContainers:     initContainers,
 					ServiceAccountName: cr.Spec.General.ServiceAccount,
 					ImagePullSecrets:   image.ImagePullSecrets,
 					NodeSelector:       cr.Spec.Dashboards.NodeSelector,
