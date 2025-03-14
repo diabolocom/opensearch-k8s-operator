@@ -73,6 +73,16 @@ entries:
     version: 2.4.0
   opensearch-operator:
   - apiVersion: v2
+    appVersion: 2.9.0
+    created: "2025-03-14T15:05:47.773463903Z"
+    description: The OpenSearch Operator Helm chart for Kubernetes
+    digest: b1ba5800648650f685e9338ec74572ccece5fc64b4b4d836304ede070b980d67
+    name: opensearch-operator
+    type: application
+    urls:
+    - https://github.com/diabolocom/opensearch-k8s-operator/releases/download/opensearch-operator-2.9.0/opensearch-operator-2.9.0.tgz
+    version: 2.9.0
+  - apiVersion: v2
     appVersion: 2.8.0
     created: "2025-03-07T11:24:59.645373592Z"
     description: The OpenSearch Operator Helm chart for Kubernetes
@@ -302,4 +312,4 @@ entries:
     urls:
     - https://opensearch-project.github.io/opensearch-k8s-operator/opensearch-operator-0.1.0.tgz
     version: 0.1.0
-generated: "2025-03-07T11:24:59.645530015Z"
+generated: "2025-03-14T15:05:47.773645282Z"
